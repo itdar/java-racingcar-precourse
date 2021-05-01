@@ -20,6 +20,14 @@ public class Car {
         return currentLocation;
     }
 
+    public String makeStatusString() {
+        StringBuilder stringBuilder = new StringBuilder(name + " : ");
+        for (int i = 0; i < currentLocation; ++i) {
+            stringBuilder.append("-");
+        }
+        return stringBuilder.toString();
+    }
+
     private boolean notValid(String name) {
         return name.length() > 5 || name.length() <= 0;
     }

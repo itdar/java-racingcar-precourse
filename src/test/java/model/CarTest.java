@@ -1,6 +1,7 @@
 package model;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -53,5 +54,15 @@ public class CarTest {
         int previousLocation = car.getCurrentLocation();
         assertThat(car.movingWithFuel(3)).isEqualTo(previousLocation);
         assertThat(car.movingWithFuel(4)).isEqualTo(previousLocation + 1);
+    }
+
+    @DisplayName("차의 현재상태(이름 + 위치)를 나타낼 문자열 만드는 기능 테스트")
+    @Test
+    public void makeStatusStringTest() {
+        Car car = new Car("car1");
+        assertThat(car.makeStatusString()).isEqualTo("car1 : -");
+        car.movingWithFuel(4);
+        car.movingWithFuel(4);
+        assertThat(car.makeStatusString()).isEqualTo("car1 : ---");
     }
 }
