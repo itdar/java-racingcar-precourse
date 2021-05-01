@@ -46,4 +46,12 @@ public class CarTest {
         assertThat(cars.checkSameName("car2")).isTrue();
         assertThat(cars.checkSameName("car5")).isFalse();
     }
+
+    @Test
+    public void cars_전진조건_정상동작여부_위치_Test() {
+        Car car = new Car("car1");
+        int previousLocation = car.getCurrentLocation();
+        assertThat(car.movingWithFuel(3)).isEqualTo(previousLocation);
+        assertThat(car.movingWithFuel(4)).isEqualTo(previousLocation + 1);
+    }
 }
