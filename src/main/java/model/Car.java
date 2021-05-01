@@ -3,19 +3,18 @@ package model;
 public class Car {
 
     private String name;
-    private int currentLocation;
+    private int currentLocation = 1;
 
     public Car(String name) {
-        if (notValid(name)) {
+        if (!isValidName(name)) {
             throw new IllegalArgumentException();
         }
         this.name = name;
-        this.currentLocation = 1;
     }
 
-    public int movingWithFuel(int fuel) {
+    public int movingWithNumber(int fuel) {
         if (fuel > 3) {
-            return ++currentLocation;
+            return moveForward();
         }
         return currentLocation;
     }
@@ -28,8 +27,12 @@ public class Car {
         return stringBuilder.toString();
     }
 
-    private boolean notValid(String name) {
-        return name.length() > 5 || name.length() <= 0;
+    private boolean isValidName(String name) {
+        return name.length() <= 5 && name.length() > 0;
+    }
+
+    private int moveForward() {
+        return ++currentLocation;
     }
 
     public String getName() {
