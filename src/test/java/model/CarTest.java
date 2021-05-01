@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
@@ -64,5 +66,17 @@ public class CarTest {
         car.movingWithNumber(4);
         car.movingWithNumber(4);
         assertThat(car.makeStatusString()).isEqualTo("car1 : ---");
+    }
+
+    @Test
+    public void getChampionsTest() {
+        cars.get("car1").moveForward();
+        cars.get("car1").moveForward();
+        cars.get("car2").moveForward();
+        cars.get("car3").moveForward();
+        cars.get("car3").moveForward();
+
+        List<String> champNames = cars.getChampions();
+        assertThat(champNames).containsExactly("car1", "car3");
     }
 }

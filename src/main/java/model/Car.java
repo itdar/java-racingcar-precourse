@@ -31,7 +31,7 @@ public class Car {
         return name.length() <= 5 && name.length() > 0;
     }
 
-    private int moveForward() {
+    public int moveForward() {
         return ++currentLocation;
     }
 
