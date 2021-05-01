@@ -5,10 +5,14 @@ import java.util.*;
 public class Cars {
     private Map<String, Car> cars = new LinkedHashMap<>();
 
-    public Cars() { }
+    public Cars(List<String> carNames) {
+        for (String name : carNames) {
+            cars.put(name, new Car(name));
+        }
+    }
 
-    public Cars(Map<String, Car> cars) {
-        this.cars = cars;
+    public Cars(String[] carNames) {
+        this(Arrays.asList(carNames));
     }
 
     public void add(Car car) {
