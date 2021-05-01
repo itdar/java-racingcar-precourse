@@ -1,9 +1,20 @@
 package model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
+    private Cars cars;
+
+    @BeforeEach
+    public void setup() {
+        cars = new Cars();
+        cars.add(new Car("car1"));
+        cars.add(new Car("car2"));
+        cars.add(new Car("car3"));
+    }
 
     @Test
     public void carNameTest() {
@@ -28,5 +39,11 @@ public class CarTest {
         assertThatThrownBy(() -> {
             Car car = new Car("");
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void cars_이미_들어가있는_이름인지_Test() {
+        assertThat(cars.checkSameName("car2")).isTrue();
+        assertThat(cars.checkSameName("car5")).isFalse();
     }
 }
