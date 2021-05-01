@@ -11,7 +11,7 @@ public class Cars {
         }
     }
 
-    public Cars(String[] carNames) {
+    public Cars(String[] carNames) throws IllegalArgumentException {
         this(Arrays.asList(carNames));
     }
 

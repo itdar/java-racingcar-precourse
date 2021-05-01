@@ -5,7 +5,7 @@ public class Car {
     private String name;
     private int currentLocation = 1;
 
-    public Car(String name) {
+    public Car(String name) throws IllegalArgumentException {
         if (!isValidName(name)) {
             throw new IllegalArgumentException();
         }
