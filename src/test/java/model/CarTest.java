@@ -74,7 +74,7 @@ public class CarTest {
         cars.get("car3").moveForward();
         cars.get("car3").moveForward();
 
-        List<String> champNames = cars.getChampions();
+        List<String> champNames = cars.getChampions().names();
         assertThat(champNames).containsExactly("car1", "car3");
     }
 

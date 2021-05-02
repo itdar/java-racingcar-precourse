@@ -1,11 +1,13 @@
 package controller;
 
 import model.Cars;
+import packaging.Champions;
 import packaging.RaceCount;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,8 +20,18 @@ public class RacingGameController {
 
     public void startGame() {
         while (raceCount.hasNextRound()) {
-            System.out.println("GameCount: " + raceCount);
+            cars.race();
+            printProgress();
         }
+        printResult(cars.getChampions());
+    }
+
+    private void printProgress() {
+        System.out.println(cars.makeStatusString());
+    }
+
+    private void printResult(Champions champions) {
+        System.out.println(champions.namesWithComma() + "(이)가 최종 우승 했습니다.");
     }
 
     public void initCars() {
@@ -27,7 +39,7 @@ public class RacingGameController {
             System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼포(,) 기준으로 구분)");
             cars = new Cars(inputCarNames());
         } catch (IllegalArgumentException | IOException e) {
-            initCars();
+            initCars(); // retry, or exit game
         }
     }
 

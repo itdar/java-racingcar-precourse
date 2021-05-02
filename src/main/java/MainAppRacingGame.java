@@ -6,6 +6,7 @@ public class MainAppRacingGame {
         RacingGameController gameController = new RacingGameController();
         gameController.initCars();
         gameController.initTryCount();
+        System.out.println("\n실행 결과");
         gameController.startGame();
     }
 

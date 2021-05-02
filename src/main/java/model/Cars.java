@@ -1,5 +1,7 @@
 package model;
 
+import packaging.Champions;
+
 import java.util.*;
 
 public class Cars {
@@ -23,6 +25,17 @@ public class Cars {
         }
     }
 
+    public String makeStatusString() {
+        StringBuilder status = new StringBuilder();
+
+        Iterator<Car> iter = cars.values().iterator();
+        while(iter.hasNext()) {
+            Car car = iter.next();
+            status.append(car.makeStatusString() + "\n");
+        }
+        return status.toString();
+    }
+
     public int makeRandomIntRangeZeroToNine() {
         Random random = new Random();
         return random.nextInt(9);
@@ -36,8 +49,11 @@ public class Cars {
         return cars.get(carName) != null;
     }
 
-    public List<String> getChampions() {
-        return findFrontNamesOn(frontLine());
+    /**
+     * 현 상황의 가장 멀리 나가있는 차들(챔피언들)을 반환한다.
+     */
+    public Champions getChampions() {
+        return new Champions(findFrontCarsOn(frontLine()));
     }
 
     /**
@@ -63,24 +79,24 @@ public class Cars {
     /**
      * 가장 멀리간 위치에 있는 차들의 이름을 찾는다.
      */
-    private List<String> findFrontNamesOn(int front) {
-        List<String> names = new ArrayList<>();
+    private List<Car> findFrontCarsOn(int front) {
+        List<Car> champCars = new ArrayList<>();
 
         Iterator<Car> iter = cars.values().iterator();
         while(iter.hasNext()) {
             Car car = iter.next();
-            addChamp(names, car, isOnFrontLine(car, front));
+            addChamp(champCars, car, isOnFrontLine(car, front));
         }
-        return names;
+        return champCars;
     }
 
     private boolean isOnFrontLine(Car car, int front) {
         return car.getCurrentLocation() == front;
     }
 
-    private void addChamp(List<String> names, Car car, boolean isChamp) {
+    private void addChamp(List<Car> names, Car car, boolean isChamp) {
         if (isChamp) {
-            names.add(car.name());
+            names.add(car);
         }
     }
 }
