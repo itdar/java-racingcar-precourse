@@ -20,9 +20,9 @@ public class CarTest {
     @Test
     public void carNameTest() {
         Car car = new Car("name");
-        assertThat(car.getName()).isEqualTo("name");
+        assertThat(car.name()).isEqualTo("name");
         car = new Car("한글이름은");
-        assertThat(car.getName()).isEqualTo("한글이름은");
+        assertThat(car.name()).isEqualTo("한글이름은");
     }
 
     @Test

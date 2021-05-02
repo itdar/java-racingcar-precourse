@@ -16,7 +16,7 @@ public class Cars {
     }
 
     public void add(Car car) {
-        cars.put(car.getName(), car);
+        cars.put(car.name(), car);
     }
 
     public Car get(String carName) {
@@ -28,7 +28,7 @@ public class Cars {
     }
 
     public List<String> getChampions() {
-        return findNamesOn(frontLine());
+        return findFrontNamesOn(frontLine());
     }
 
     /**
@@ -36,6 +36,7 @@ public class Cars {
      */
     private int frontLine() {
         int front = 0;
+
         Iterator<Car> iter = cars.values().iterator();
         while(iter.hasNext()) {
             front = checkFront(front, iter.next().getCurrentLocation());
@@ -53,7 +54,7 @@ public class Cars {
     /**
      * 가장 멀리간 위치에 있는 차들의 이름을 찾는다.
      */
-    private List<String> findNamesOn(int front) {
+    private List<String> findFrontNamesOn(int front) {
         List<String> names = new ArrayList<>();
 
         Iterator<Car> iter = cars.values().iterator();
@@ -70,7 +71,7 @@ public class Cars {
 
     private void addChamp(List<String> names, Car car, boolean isChamp) {
         if (isChamp) {
-            names.add(car.getName());
+            names.add(car.name());
         }
     }
 }

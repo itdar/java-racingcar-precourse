@@ -1,6 +1,7 @@
 package controller;
 
 import model.Cars;
+import packaging.RaceCount;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,13 +12,13 @@ import java.util.Scanner;
 public class RacingGameController {
 
     private Cars cars;
-    private int countTry;
+    private RaceCount raceCount;
 
     public RacingGameController() { }
 
     public void startGame() {
-        while (countTry-- > 0) {
-            System.out.println("GameCount: " + countTry);
+        while (raceCount.hasNextRound()) {
+            System.out.println("GameCount: " + raceCount);
         }
     }
 
@@ -43,6 +44,6 @@ public class RacingGameController {
     public void initTryCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         Scanner scanner = new Scanner(System.in);
-        countTry = scanner.nextInt();
+        raceCount = new RaceCount(scanner.nextInt());
     }
 }

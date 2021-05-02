@@ -1,45 +1,38 @@
 package model;
 
+import packaging.Name;
+import packaging.Location;
+
 public class Car {
 
-    private String name;
-    private int currentLocation = 1;
+    private Name name;
+    private Location location;
 
     public Car(String name) throws IllegalArgumentException {
-        if (!isValidName(name)) {
-            throw new IllegalArgumentException();
-        }
-        this.name = name;
+        this.name = new Name(name);
+        this.location = new Location();
     }
 
     public int movingWithNumber(int fuel) {
         if (fuel > 3) {
-            return moveForward();
+            return location.moveForward();
         }
-        return currentLocation;
-    }
-
-    public String makeStatusString() {
-        StringBuilder stringBuilder = new StringBuilder(name + " : ");
-        for (int i = 0; i < currentLocation; ++i) {
-            stringBuilder.append("-");
-        }
-        return stringBuilder.toString();
-    }
-
-    private boolean isValidName(String name) {
-        return name.length() <= 5 && name.length() > 0;
+        return location.stay();
     }
 
     public int moveForward() {
-        return ++currentLocation;
+        return location.moveForward();
     }
 
-    public String getName() {
-        return this.name;
+    public String makeStatusString() {
+        return name + " : " + location.statusLine();
+    }
+
+    public String name() {
+        return name.toString();
     }
 
     public int getCurrentLocation() {
-        return this.currentLocation;
+        return location.current();
     }
 }
