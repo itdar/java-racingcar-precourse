@@ -15,8 +15,17 @@ public class Cars {
         this(Arrays.asList(carNames));
     }
 
-    public void add(Car car) {
-        cars.put(car.name(), car);
+    public void race() {
+        Iterator<Car> iter = cars.values().iterator();
+        while(iter.hasNext()) {
+            Car car = iter.next();
+            car.movingWithNumber(makeRandomIntRangeZeroToNine());
+        }
+    }
+
+    public int makeRandomIntRangeZeroToNine() {
+        Random random = new Random();
+        return random.nextInt(9);
     }
 
     public Car get(String carName) {
