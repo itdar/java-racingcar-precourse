@@ -21,7 +21,7 @@ public class Cars {
         Iterator<Car> iter = cars.values().iterator();
         while(iter.hasNext()) {
             Car car = iter.next();
-            car.movingWithNumber(makeRandomIntRangeZeroToNine());
+            car.moveOrNotWithNumber(makeRandomIntRangeZeroToNine());
         }
     }
 
@@ -41,7 +41,7 @@ public class Cars {
         return random.nextInt(9);
     }
 
-    public Car get(String carName) {
+    public Car getCar(String carName) {
         return cars.get(carName);
     }
 
@@ -52,7 +52,7 @@ public class Cars {
     /**
      * 현 상황의 가장 멀리 나가있는 차들(챔피언들)을 반환한다.
      */
-    public Champions getChampions() {
+    public Champions findChampions() {
         return new Champions(findFrontCarsOn(frontLine()));
     }
 

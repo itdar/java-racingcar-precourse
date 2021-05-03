@@ -13,8 +13,8 @@ public class Car {
         this.location = new Location();
     }
 
-    public int movingWithNumber(int fuel) {
-        if (fuel > 3) {
+    public int moveOrNotWithNumber(int number) {
+        if (number > GamePlayOptions.CAR_MOVE_OR_NOT_THRESHOLD) {
             return location.moveForward();
         }
         return location.stay();

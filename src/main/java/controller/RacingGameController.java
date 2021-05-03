@@ -17,15 +17,15 @@ public class RacingGameController {
     public RacingGameController() { }
 
     public void startGame() {
-        printRacingStart();
+        printRacingResult();
         while (raceCount.hasNextRound()) {
             cars.race();
             printProgress();
         }
-        printResult(cars.getChampions());
+        printChampions(cars.findChampions());
     }
 
-    private void printRacingStart() {
+    private void printRacingResult() {
         System.out.println("\n실행 결과");
     }
 
@@ -33,7 +33,7 @@ public class RacingGameController {
         System.out.println(cars.makeStatusString());
     }
 
-    private void printResult(Champions champions) {
+    private void printChampions(Champions champions) {
         System.out.println(champions.namesWithComma() + "(이)가 최종 우승 했습니다.");
     }
 

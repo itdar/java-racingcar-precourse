@@ -52,8 +52,8 @@ public class CarTest {
     public void cars_전진조건_정상동작여부_위치_Test() {
         Car car = new Car("car1");
         int previousLocation = car.getCurrentLocation();
-        assertThat(car.movingWithNumber(3)).isEqualTo(previousLocation);
-        assertThat(car.movingWithNumber(4)).isEqualTo(previousLocation + 1);
+        assertThat(car.moveOrNotWithNumber(3)).isEqualTo(previousLocation);
+        assertThat(car.moveOrNotWithNumber(4)).isEqualTo(previousLocation + 1);
     }
 
     @DisplayName("차의 현재상태(이름 + 위치)를 나타낼 문자열 만드는 기능 테스트")
@@ -61,20 +61,20 @@ public class CarTest {
     public void makeStatusStringTest() {
         Car car = new Car("car1");
         assertThat(car.makeStatusString()).isEqualTo("car1 : -");
-        car.movingWithNumber(4);
-        car.movingWithNumber(4);
+        car.moveOrNotWithNumber(4);
+        car.moveOrNotWithNumber(4);
         assertThat(car.makeStatusString()).isEqualTo("car1 : ---");
     }
 
     @Test
     public void getChampionsTest() {
-        cars.get("car1").moveForward();
-        cars.get("car1").moveForward();
-        cars.get("car2").moveForward();
-        cars.get("car3").moveForward();
-        cars.get("car3").moveForward();
+        cars.getCar("car1").moveForward();
+        cars.getCar("car1").moveForward();
+        cars.getCar("car2").moveForward();
+        cars.getCar("car3").moveForward();
+        cars.getCar("car3").moveForward();
 
-        List<String> champNames = cars.getChampions().names();
+        List<String> champNames = cars.findChampions().names();
         assertThat(champNames).containsExactly("car1", "car3");
     }
 

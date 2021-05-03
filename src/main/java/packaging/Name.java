@@ -1,5 +1,7 @@
 package packaging;
 
+import model.GamePlayOptions;
+
 public class Name {
     private String name;
 
@@ -11,7 +13,8 @@ public class Name {
     }
 
     private boolean isValidName(String name) {
-        return name.length() <= 5 && name.length() > 0;
+        return name.length() <= GamePlayOptions.MAXIMUM_LENGTH_OF_CAR_NAME
+                && name.length() >= GamePlayOptions.MINIMUM_LENGTH_OF_CAR_NAME;
     }
 
     @Override
