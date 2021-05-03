@@ -5,7 +5,7 @@ public class Location {
     private int location;
 
     public Location() {
-        this.location = 1;
+        this.location = 0;
     }
 
     public int moveForward() {
